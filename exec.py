@@ -11,7 +11,7 @@ def convert_png_to_pdf(input_folder, output_file):
     page_width, page_height = letter[::-1]  # 가로와 세로를 바꿈
 
     # 입력 폴더 내의 모든 PNG 파일 가져오기
-    png_files = sorted([f for f in os.listdir(input_folder) if f.endswith('.png')])
+    png_files = sorted([f for f in os.listdir(input_folder) if f.endswith('.png')], key=lambda f: os.path.getmtime(os.path.join(input_folder, f)))
 
     # PNG 파일을 이어붙여서 PDF로 추가
     for png_file in png_files:
